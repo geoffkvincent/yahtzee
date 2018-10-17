@@ -1,7 +1,7 @@
 import React from 'react'
-import connect form 'react-redux'
-import seman
-import styled
+import {connect} form 'react-redux'
+import {} from'semantic-ui-react'
+import styles from 'styled-components'
 
 const Pointer = styled(List.Icon) `
   cursor: pointer;
