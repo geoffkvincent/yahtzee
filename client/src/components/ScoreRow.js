@@ -1,25 +1,26 @@
 import React from 'react'
-import {connect} form 'react-redux'
-import {} from'semantic-ui-react'
-import styles from 'styled-components'
+import { connect } from 'react-redux'
+import { List, Header } from 'semantic-ui-react'
+import styled from 'styled-components'
 
-const Pointer = styled(List.Icon) `
+const Pointer = styled(List.Icon)`
   cursor: pointer;
 `
 
 class ScoreRow extends React.Component {
-  render () {
+  render() {
+    const { name, score, currentGame: { roll }} = this.props
     return (
       <List.Item>
         { score === null &&
-            <Pointer 
+            <Pointer
               name="check circle outline"
               color="green"
             />
         }
         <List.Content>
-        <Header as="h4" floated="left">{score || 0}</Header>
-        <Header as="h5" floated="left">{score || 0}</Header>
+          <Header as="h4" floated="left">{score || 0}</Header>
+          <Header as="h5" floated="right">{name}</Header>
         </List.Content>
       </List.Item>
     )
