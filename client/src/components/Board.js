@@ -17,7 +17,7 @@ const Board = ({
       <Grid.Row>
         <Button
           fluid
-          onClick={dispatch(rollDice())}
+          onClick={() => dispatch(rollDice())}
           {...disabled}
         >
           Roll
@@ -44,9 +44,9 @@ const Board = ({
 }
 
 const mapStateToProps = (state) => {
-  const { dice, keep, roll} = state.currentGame
+  const { dice, keep, roll } = state.currentGame
   return {
-    dice,
+    dice, 
     keep,
     roll,
   }

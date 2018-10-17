@@ -20,8 +20,7 @@ const Game = () => (
   <Grid>
     <Grid.Row>
       <BoardContainer width={10}>
-        <Board 
-        />
+        <Board />
       </BoardContainer>
       <ScoreContainer width={6}>
         <ScoreCard />

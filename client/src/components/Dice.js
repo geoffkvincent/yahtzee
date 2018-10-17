@@ -8,7 +8,7 @@ import d4 from '../images/d4.png'
 import d5 from '../images/d5.png'
 import d6 from '../images/d6.png'
 import { toggleKept } from '../reducers/currentGame'
-import {connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 const DiceImg = styled(Image)`
   margin-left: 20px;
@@ -36,4 +36,4 @@ const Dice = ({ value, index, kept, dispatch }) => (
   </Grid.Column>
 )
 
-export default connect() (Dice)
+export default connect()(Dice)
