@@ -8,7 +8,7 @@ export const rollDice = () => {
     const { keep, dice } = getState().currentGame
 
     const newDice = dice.map( (d, i) => {
-      if ( keepf.includes(i))
+      if ( keep.includes(i))
       return Math.floor(Math.random() * 6) + 1
     })
 
