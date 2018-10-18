@@ -1,10 +1,13 @@
-20.times do
+20.times do 
   user = User.create(
     email: Faker::Internet.unique.email,
-    password: 'passwoed'
+    password: 'password'
   )
 
   5.times do
-    Score.create(
-    
-  )
+    Score.create( 
+      user_id: user.id, 
+      value: Faker::Number.between(25, 65)
+    )
+  end
+end

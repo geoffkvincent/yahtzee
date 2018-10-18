@@ -13,7 +13,7 @@ const checkEndGame = (scores, dispatch) => {
     })
 
   if (gameOver) 
-    dispatch( postScore(this.calcScores(scores)) )
+    dispatch( postScore(calcScores(scores)) )
 
   return gameOver
 }
