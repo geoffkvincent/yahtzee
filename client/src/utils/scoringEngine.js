@@ -7,6 +7,7 @@ export const singles = (value, dice) => {
 export const addAllDice = (type, dice) => {
   let totals = []
 
+
   switch(type) {
     case 'Three Of A Kind':
       totals = validateThreeOfAKind(dice) ? dice : []
@@ -16,9 +17,9 @@ export const addAllDice = (type, dice) => {
       break
     default:
       totals = dice
-
-    return addDice(totals)
   }
+  
+  return addDice(totals)
 }
 
 export const staticScore = (type, dice) => {
@@ -31,6 +32,8 @@ export const staticScore = (type, dice) => {
       return validateHighStraight(dice) ? 40 : 0
     case 'Yahtzee':
       return validateYahtzee(dice) ? 50 : 0
+    default:
+      return 0
   }
 }
 
