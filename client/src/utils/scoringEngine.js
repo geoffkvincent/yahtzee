@@ -13,7 +13,10 @@ export const addAllDice = (type, dice) => {
 }
 
 export const staticScore = (type, dice) => {
-
+  switch(type) {
+    case 'Full HOuse':
+    )
+  }
 }
 
 const addDice = (dice) => {
