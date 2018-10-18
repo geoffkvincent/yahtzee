@@ -2,8 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { List, Header } from 'semantic-ui-react'
 import styled from 'styled-components'
+import {uadateSCores,resetRoll} from '../reduicers/currentgame'
+import{
+  singles,
+  addAllDice,
+  staticScore,
+} from '../utils/sco?'
 
-const Pointer = styled(List.Icon)`
+const Pointer = style{d(List.Icon)`
   cursor: pointer;
 `
 
