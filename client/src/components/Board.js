@@ -1,12 +1,23 @@
 import React from 'react'
-import { Grid, Button, Divider, Header } from 'semantic-ui-react'
+import { Header, Grid, Button, Divider } from 'semantic-ui-react'
 import Dice from './Dice'
 import { connect } from 'react-redux'
-import { rollDice } from '../reducers/currentGame'
+import { rollDice, newGame } from '../reducers/currentGame'
+
+const checkEndGame = (scores) => {
+  let gameOver = true
+  scores.map( s => s.score ) 
+    .forEach( score => {
+      if (score === null)
+        gameOver = false
+    })
+
+  return gameOver
+}
 
 const calcScores = (scores) => {
-  return scores.map(s => s.scores)
-    .reduce((total, score) => total + score, 0)
+  return scores.map( s => s.score )
+    .reduce( (total, score) => total + score, 0 )
 }
 
 const Board = ({ 
@@ -26,12 +37,12 @@ const Board = ({
           fluid
           onClick={ gameOver ? 
             () => dispatch(newGame())
-             :
-             () => 
+            :
+            () => dispatch(rollDice())
           }
           {...disabled}
         >
-          Roll
+          { gameOver ? 'New Game' : 'Roll' }
         </Button>
         <Grid.Column width={16}>
           <Divider hidden />
