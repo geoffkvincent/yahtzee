@@ -2,18 +2,40 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { List, Header } from 'semantic-ui-react'
 import styled from 'styled-components'
-import {uadateSCores,resetRoll} from '../reduicers/currentgame'
-import{
+import { updateScores, resetRoll } from '../reducers/currentGame'
+import { 
   singles,
   addAllDice,
   staticScore,
-} from '../utils/sco?'
+} from '../utils/scoringEngine'
 
-const Pointer = style{d(List.Icon)`
+const Pointer = styled(List.Icon)`
   cursor: pointer;
 `
 
 class ScoreRow extends React.Component {
+  updateScore = (key) => {
+    const { currentGame: { dice, scores }, dispatch } = this.props
+    const entry = scores.find( d => d.name === key )
+    dispatch(resetRoll()) //Student cheating prevention
+
+    if (entry.value)
+      entry.score = singles(entry.value, dice)
+    else if (entry.addAll)
+      entry.score = addAllDice(entry.name, dice)
+    else
+      entry.score = staticScore(entry.name, dice)
+
+    const newScores = scores.map( score => {
+      if (score.name === key)
+        return entry
+      return score
+    })
+
+    dispatch(updateScores(newScores))
+
+  }
+
   render() {
     const { name, score, currentGame: { roll }} = this.props
     return (
@@ -22,6 +44,7 @@ class ScoreRow extends React.Component {
             <Pointer
               name="check circle outline"
               color="green"
+              onClick={ roll !== 0 ? () => this.updateScore(name) : f => f }
             />
         }
         <List.Content>
